@@ -16,7 +16,7 @@ export const cleanMarkdown = (markdown: string, options: CleanMarkdownOptions = 
     ...options
   };
 
-  const processor = remark();
+  const processor = remark().data('settings', { bullet: '-' });
 
   if (resolvedOptions.removeBold) {
     processor.use(remarkRemoveBold);

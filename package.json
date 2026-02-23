@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "lint": "biome check --write ./src ./test",
+    "lint": "biome check --write ./src ./test && npx tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
   },

@@ -1,15 +1,37 @@
 {
-  "name": "typescript-template",
-  "private": true,
-  "version": "0.0.0",
+  "name": "ai-text-cleaner",
+  "version": "0.1.0",
+  "description": "LLMが生成したMarkdownから「AIっぽさ」を取り除くためのテキスト加工ライブラリ",
+  "keywords": [
+    "markdown",
+    "remark",
+    "llm",
+    "text",
+    "cleanup"
+  ],
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
-    "dev": "node --import tsx --env-file .env ./src/scripts/discord.ts",
-    "start": "node /app/dist/scripts/discord.js",
     "build": "tsc",
-    "lint": "biome check --write ./src"
+    "lint": "biome check --write ./src ./test",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
+    "remark": "^15.0.1",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
     "@biomejs/biome": "^2.4.4",
     "@types/node": "^25.3.0",
     "tsx": "^4.21.0",

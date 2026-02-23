@@ -2,6 +2,7 @@
   "name": "ai-text-cleaner",
   "version": "0.1.0",
   "description": "LLMが生成したMarkdownから「AIっぽさ」を取り除くためのテキスト加工ライブラリ",
+  "license": "MIT",
   "keywords": [
     "markdown",
     "remark",
@@ -13,27 +14,36 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "scripts": {
-    "build": "tsc",
     "lint": "biome check --write ./src ./test && npx tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "build": "npx tsup ./src",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "remark": "^15.0.1",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",
     "@types/node": "^25.3.0",
+    "tsup": "^8.5.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"

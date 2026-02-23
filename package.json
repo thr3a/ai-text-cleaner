@@ -1,6 +1,6 @@
 {
   "name": "ai-text-cleaner",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "LLMが生成したMarkdownから「AIっぽさ」を取り除くためのテキスト加工ライブラリ",
   "license": "MIT",
   "keywords": [
